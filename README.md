@@ -22,7 +22,8 @@ npm install node-red-contrib-browser-utils node-red-contrib-play-audio node-red-
 npm install @tensorflow/tfjs node-red-contrib-teachable-machine
 ```
 
-
+#### choose USB_camera
+![plot](./usb_camera.png)
 
 
 #### may needed.....
