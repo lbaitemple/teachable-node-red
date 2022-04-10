@@ -2,6 +2,7 @@
 
 (https://nodered.org/docs/getting-started/raspberrypi)
 ```
+sudo apt update && sudo apt upgrade -y
 sudo apt install build-essential git curl -y
 bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
 sudo systemctl enable nodered.service
@@ -18,8 +19,7 @@ sudo usermod -a -G video $USER
 sudo apt install fswebcam -y
 cd ~/.node-red
 npm install node-red-contrib-browser-utils node-red-contrib-play-audio node-red-contrib-image-output  node-red-contrib-usbcamera  
-npm install @tensorflow/tfjs
-npm install node-red-contrib-teachable-machine
+npm install @tensorflow/tfjs node-red-contrib-teachable-machine
 ```
 
 
