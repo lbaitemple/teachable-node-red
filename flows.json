@@ -1,0 +1,116 @@
+[
+    {
+        "id": "dd7f6f8007336a97",
+        "type": "tab",
+        "label": "teachableflow",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "7c8134ad45aa02d4",
+        "type": "inject",
+        "z": "dd7f6f8007336a97",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 200,
+        "wires": [
+            [
+                "8d16fc44b1efd781"
+            ]
+        ]
+    },
+    {
+        "id": "f2b06fc31171d6e0",
+        "type": "image",
+        "z": "dd7f6f8007336a97",
+        "name": "",
+        "width": "320",
+        "data": "payload",
+        "dataType": "msg",
+        "thumbnail": false,
+        "active": true,
+        "pass": true,
+        "outputs": 1,
+        "x": 520,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8d16fc44b1efd781",
+        "type": "usbcamera",
+        "z": "dd7f6f8007336a97",
+        "filemode": "0",
+        "filename": "image01.jpg",
+        "filedefpath": "1",
+        "filepath": "",
+        "fileformat": "jpeg",
+        "resolution": "1",
+        "name": "",
+        "x": 330,
+        "y": 300,
+        "wires": [
+            [
+                "f2b06fc31171d6e0",
+                "a6a00084a3e2aa9e"
+            ]
+        ]
+    },
+    {
+        "id": "a6a00084a3e2aa9e",
+        "type": "teachable machine",
+        "z": "dd7f6f8007336a97",
+        "name": "",
+        "mode": "online",
+        "modelUrl": "https://teachablemachine.withgoogle.com/models/_OGgPNEIv/",
+        "localModel": "teachable_model",
+        "output": "best",
+        "activeThreshold": true,
+        "threshold": 80,
+        "activeMaxResults": true,
+        "maxResults": 3,
+        "passThrough": true,
+        "x": 410,
+        "y": 180,
+        "wires": [
+            [
+                "cdbd43517a622e6a"
+            ]
+        ]
+    },
+    {
+        "id": "cdbd43517a622e6a",
+        "type": "debug",
+        "z": "dd7f6f8007336a97",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 780,
+        "y": 120,
+        "wires": []
+    }
+]
