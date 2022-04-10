@@ -12,14 +12,6 @@ sudo systemctl start nodered.service
 sudo usermod -a -G video $USER
 
 ```
-## install dependencies
-```
-cd ~
-git clone https://github.com/IBM/node-red-tensorflowjs
-cd ~/node-red-tensorflowjs
-npm install
-cd ~/.node-red
-npm install ~/node-red-tensorflowjs/node-red-contrib-tfjs-object-detection/node-red-contrib-tfjs-object-detection
 ```
 
 # teachable-node-red
@@ -37,4 +29,12 @@ npm install node-red-contrib-teachable-machine
 
 #### may needed.....
 
+## install dependencies
+```
+cd ~
+git clone https://github.com/IBM/node-red-tensorflowjs
+cd ~/node-red-tensorflowjs
+npm install
+cd ~/.node-red
+npm install ~/node-red-tensorflowjs/node-red-contrib-tfjs-object-detection/node-red-contrib-tfjs-object-detection
 
