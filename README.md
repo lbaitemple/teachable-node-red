@@ -23,10 +23,8 @@ npm install @tensorflow/tfjs node-red-contrib-teachable-machine
 ```
 
 #### choose USB_camera
-![](https://raw.githubusercontent.com/lbaitemple/teachable-node-red/main/usb_camera.png | width = 100)
-
-<img src="usb_camera.png" width="248">
-
+<img src="usb_camera.png" width="448">
+You will need to choose generate before use buffer option
 #### may needed.....
 
 ## install dependencies
