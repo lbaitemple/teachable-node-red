@@ -15,15 +15,22 @@ sudo usermod -a -G video $USER
 # teachable-node-red
 
 ```
+sudo apt install fswebcam -y
+cd ~/.node-red
+npm install node-red-contrib-browser-utils node-red-contrib-play-audio node-red-contrib-image-output  node-red-contrib-usbcamera 
+npm install node-red-contrib-teachable-machine
+```
+
+
+
+
+#### may needed.....
+
+```
 git clone https://github.com/IBM/node-red-tensorflowjs
 cd node-red-tensorflowjs
 npm install
-```
-
-```
-sudo apt install fswebcam -y
 cd ~/.node-red
 npm install ~/node-red-tensorflowjs/node-red-contrib-tfjs-object-detection/node-red-contrib-tfjs-object-detection
-npm install node-red-contrib-browser-utils node-red-contrib-play-audio node-red-contrib-image-output 
-npm install node-red-contrib-teachable-machine
+
 ```
