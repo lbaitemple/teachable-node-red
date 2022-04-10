@@ -12,10 +12,8 @@ sudo systemctl start nodered.service
 sudo usermod -a -G video $USER
 
 ```
-```
 
-# teachable-node-red
-
+### teachable-node-red
 ```
 sudo apt install fswebcam -y
 cd ~/.node-red
