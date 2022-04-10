@@ -17,7 +17,7 @@ sudo usermod -a -G video $USER
 ```
 sudo apt install fswebcam -y
 cd ~/.node-red
-npm install node-red-contrib-browser-utils node-red-contrib-play-audio node-red-contrib-image-output  node-red-contrib-usbcamera  node-red-contrib-camerapi
+npm install node-red-contrib-browser-utils node-red-contrib-image-tools node-red-contrib-play-audio node-red-contrib-image-output  node-red-contrib-usbcamera  node-red-contrib-camerapi
 npm install node-red-contrib-teachable-machine
 ```
 
