@@ -28,8 +28,9 @@ npm install node-red-contrib-image-tools node-red-contrib-camerapi
 #### may needed.....
 
 ```
+cd ~
 git clone https://github.com/IBM/node-red-tensorflowjs
-cd node-red-tensorflowjs
+cd ~/node-red-tensorflowjs
 npm install
 cd ~/.node-red
 npm install ~/node-red-tensorflowjs/node-red-contrib-tfjs-object-detection/node-red-contrib-tfjs-object-detection
