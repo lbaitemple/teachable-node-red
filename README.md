@@ -23,6 +23,12 @@ npm install @tensorflow/tfjs
 npm install node-red-contrib-teachable-machine
 ```
 
+### install neopixel
+```
+curl https://get.pimoroni.com/unicornhat | bash
+cd ~/.node-red
+npm install node-red-node-pi-neopixel
+```
 #### choose USB_camera
 <img src="usb_camera.png" width="448">
 You will need to choose generate before use buffer option
