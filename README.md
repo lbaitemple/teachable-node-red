@@ -13,6 +13,13 @@ sudo systemctl start nodered.service
 sudo usermod -a -G video $USER
 
 ```
+#### In pallet install
+```
+node-red-contrib-usbcamera 
+node-red-dashboard
+node-red-node-base64
+node-red-contrib-teachable-machine
+```
 
 ### teachable-node-red
 ```
