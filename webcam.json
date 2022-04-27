@@ -1,0 +1,129 @@
+[
+    {
+        "id": "ea8c30375127ce48",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b73849cf34df9576",
+        "type": "usbcamera",
+        "z": "ea8c30375127ce48",
+        "filemode": "0",
+        "filename": "image01.jpg",
+        "filedefpath": "1",
+        "filepath": "",
+        "fileformat": "jpeg",
+        "resolution": "1",
+        "name": "",
+        "x": 230,
+        "y": 180,
+        "wires": [
+            [
+                "87333cec412b03b9"
+            ]
+        ]
+    },
+    {
+        "id": "ac18dde525ea42f3",
+        "type": "template",
+        "z": "ea8c30375127ce48",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<img width=\"320px\" height=\"240px\" src=\"data:image/jpg;base64,{{{payload}}}\">",
+        "output": "str",
+        "x": 400,
+        "y": 340,
+        "wires": [
+            [
+                "dc2776abc0b593ec"
+            ]
+        ]
+    },
+    {
+        "id": "dc2776abc0b593ec",
+        "type": "ui_template",
+        "z": "ea8c30375127ce48",
+        "group": "c7a43587.2944e8",
+        "name": "",
+        "order": 0,
+        "width": "6",
+        "height": "5",
+        "format": "<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 560,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "87333cec412b03b9",
+        "type": "base64",
+        "z": "ea8c30375127ce48",
+        "name": "",
+        "action": "str",
+        "property": "payload",
+        "x": 270,
+        "y": 280,
+        "wires": [
+            [
+                "ac18dde525ea42f3"
+            ]
+        ]
+    },
+    {
+        "id": "c115eab5b49f82a9",
+        "type": "ui_button",
+        "z": "ea8c30375127ce48",
+        "name": "",
+        "group": "c7a43587.2944e8",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Refresh Image",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 120,
+        "y": 120,
+        "wires": [
+            [
+                "b73849cf34df9576"
+            ]
+        ]
+    },
+    {
+        "id": "c7a43587.2944e8",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "fbd536a.22bf9c8",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "fbd536a.22bf9c8",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard"
+    }
+]
