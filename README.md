@@ -17,22 +17,22 @@ sudo systemctl start nodered.service
 sudo usermod -a -G video $USER
 
 ```
+### install tensorflow
+```
+sudo apt install fswebcam -y
+cd ~/.node-red
+npm install @tensorflow/tfjs 
+```
+
 #### In pallet install
 ```
 node-red-contrib-usbcamera 
 node-red-dashboard
 node-red-node-base64
+node-red-contrib-image-output
 node-red-contrib-teachable-machine
 ```
 
-### teachable-node-red
-```
-sudo apt install fswebcam -y
-cd ~/.node-red
-npm install node-red-contrib-browser-utils node-red-contrib-play-audio node-red-contrib-image-output  node-red-contrib-usbcamera  
-npm install @tensorflow/tfjs 
-npm install node-red-contrib-teachable-machine
-```
 
 ### install neopixel
 ```
