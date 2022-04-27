@@ -1,4 +1,8 @@
+### setup raspbrry pi using 
+https://github.com/lbaitemple/raspberry_IP/tree/nomqtt
+
 # install node-red 
+
 
 (https://nodered.org/docs/getting-started/raspberrypi)
 ```
