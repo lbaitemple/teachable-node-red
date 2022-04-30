@@ -52,6 +52,13 @@ sudo ./mjpg_streamer -i "./input_uvc.so -f 10 -r 148x102 -n -y" -o "./output_htt
 ```
 ###### check the steam using http://ipaddress:8080/stream.html
 
+#### Yolo
+```
+cd ~
+git clone https://github.com/tmobile/node-red-contrib-yolo-object-detection
+cd ~/.node-red
+npm i node-red-contrib-yolo-object-detection
+```
 #### may needed.....
 
 ## install dependencies
