@@ -244,6 +244,27 @@
         ]
     },
     {
+        "id": "65468a718d0e7945",
+        "type": "ui_template",
+        "z": "ea8c30375127ce48",
+        "group": "d4d5246445f9408f",
+        "name": "",
+        "order": 1,
+        "width": "0",
+        "height": "0",
+        "format": "<iframe scrolling=no marginwidth=0 marginheight=0 frameborder=0 width=640 height=480 src=\"http://192.168.86.24:8080/?action=stream/\"></iframe>\n",
+        "storeOutMessages": true,
+        "fwdInMessages": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 260,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
         "id": "a4244ab9a132ff7a",
         "type": "ui_group",
         "name": "Image Prediction",
@@ -251,6 +272,17 @@
         "order": 1,
         "disp": true,
         "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "d4d5246445f9408f",
+        "type": "ui_group",
+        "name": "Video Stream",
+        "tab": "fbd536a.22bf9c8",
+        "order": 2,
+        "disp": true,
+        "width": "17",
         "collapse": false,
         "className": ""
     },
