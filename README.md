@@ -49,6 +49,9 @@ You will need to choose generate before use buffer option
 git clone https://github.com/jacksonliam/mjpg-streamer
 cd ./mjpg-streamer/mjpg-streamer-experimental
 sudo ./mjpg_streamer -i "./input_uvc.so -f 10 -r 148x102 -n -y" -o "./output_http.so -w ./www -p 8080"
+cat bashrc >> ~/.bashrc
+source ~/.bashrc
+cam
 ```
 ###### check the steam using http://ipaddress:8080/stream.html
 
