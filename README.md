@@ -36,7 +36,7 @@ node-red-contrib-teachable-machine
 
 For raspberry pi camera, you will need to run
 ```
-sudo apt-get install python-picamera python3-picamera
+sudo apt-get install python-picamera python3-picamera -y
 ```
 
 ### install neopixel
