@@ -27,12 +27,17 @@ npm install @tensorflow/tfjs
 #### In pallet install
 ```
 node-red-contrib-usbcamera 
+node-red-contrib-camerapi
 node-red-dashboard
 node-red-node-base64
 node-red-contrib-image-output
 node-red-contrib-teachable-machine
 ```
 
+For raspberry pi camera, you will need to run
+```
+sudo apt-get install python-picamera python3-picamera
+```
 
 ### install neopixel
 ```
