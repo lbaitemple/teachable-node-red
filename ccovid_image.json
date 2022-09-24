@@ -1,0 +1,241 @@
+[
+    {
+        "id": "59fc943e25473645",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "54d516e85c4f91e1",
+        "type": "template",
+        "z": "59fc943e25473645",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<img width=\"320px\" height=\"240px\" src=\"data:image/jpg;base64,{{{payload}}}\">",
+        "output": "str",
+        "x": 600,
+        "y": 220,
+        "wires": [
+            [
+                "a37dc311a0019c82"
+            ]
+        ]
+    },
+    {
+        "id": "a37dc311a0019c82",
+        "type": "ui_template",
+        "z": "59fc943e25473645",
+        "group": "9f4bace2.7b09a",
+        "name": "ImageTemplate",
+        "order": 4,
+        "width": 6,
+        "height": 6,
+        "format": "<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 700,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7ef3f6f4b664a664",
+        "type": "base64",
+        "z": "59fc943e25473645",
+        "name": "",
+        "action": "",
+        "property": "payload",
+        "x": 480,
+        "y": 300,
+        "wires": [
+            [
+                "54d516e85c4f91e1"
+            ]
+        ]
+    },
+    {
+        "id": "38dad13de1c1547a",
+        "type": "http request",
+        "z": "59fc943e25473645",
+        "name": "",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": "ignore",
+        "url": "http://{{payload}}:8080/?action=snapshot",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 310,
+        "y": 320,
+        "wires": [
+            [
+                "5a6bcfb563c52633",
+                "7ef3f6f4b664a664",
+                "337ff149a1b382ad"
+            ]
+        ]
+    },
+    {
+        "id": "9497df38cc994cc2",
+        "type": "ui_template",
+        "z": "59fc943e25473645",
+        "group": "9f4bace2.7b09a",
+        "name": "VideoTemplate",
+        "order": 3,
+        "width": 6,
+        "height": 5,
+        "format": "",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 640,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5a6bcfb563c52633",
+        "type": "debug",
+        "z": "59fc943e25473645",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 530,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "ad3e2fd4b68b2cc6",
+        "type": "template",
+        "z": "59fc943e25473645",
+        "name": "",
+        "field": "template",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<iframe scrolling=no marginwidth=0 marginheight=0 frameborder=0 width=640 height=480\n    style=\"-webkit-transform:scale(1.0);-moz-transform-scale(0.5);\"\n    src=\"http://{{payload}}:8080/?action=stream/\"></iframe>",
+        "output": "str",
+        "x": 420,
+        "y": 100,
+        "wires": [
+            [
+                "9497df38cc994cc2"
+            ]
+        ]
+    },
+    {
+        "id": "3174f03bedd6f49b",
+        "type": "file",
+        "z": "59fc943e25473645",
+        "name": "",
+        "filename": "filename",
+        "filenameType": "msg",
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 720,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "337ff149a1b382ad",
+        "type": "function",
+        "z": "59fc943e25473645",
+        "name": "",
+        "func": "let now = new Date().toISOString().replace(/:/g, \"-\")\n//node.warn(now);\n\nmsg.filename = `/home/pi/covid/${now}.jpg`\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 480,
+        "wires": [
+            [
+                "3174f03bedd6f49b"
+            ]
+        ]
+    },
+    {
+        "id": "3eee82ad3c5aad6b",
+        "type": "ui_button",
+        "z": "59fc943e25473645",
+        "name": "",
+        "group": "9f4bace2.7b09a",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "button",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "192.168.86.58",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 230,
+        "y": 140,
+        "wires": [
+            [
+                "38dad13de1c1547a",
+                "ad3e2fd4b68b2cc6"
+            ]
+        ]
+    },
+    {
+        "id": "c1fdee3c7e1fa041",
+        "type": "ui_spacer",
+        "z": "59fc943e25473645",
+        "name": "spacer",
+        "group": "9f4bace2.7b09a",
+        "order": 2,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "9f4bace2.7b09a",
+        "type": "ui_group",
+        "name": "MJPEG Encoder",
+        "tab": "fbd536a.22bf9c8",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "fbd536a.22bf9c8",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
