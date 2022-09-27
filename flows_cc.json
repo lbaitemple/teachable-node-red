@@ -2,7 +2,7 @@
     {
         "id": "59fc943e25473645",
         "type": "tab",
-        "label": "Flow 3",
+        "label": "flow_mcc",
         "disabled": false,
         "info": "",
         "env": []
@@ -18,8 +18,8 @@
         "syntax": "mustache",
         "template": "<img width=\"320px\" height=\"240px\" src=\"data:image/jpg;base64,{{{payload}}}\">",
         "output": "str",
-        "x": 600,
-        "y": 220,
+        "x": 780,
+        "y": 320,
         "wires": [
             [
                 "a37dc311a0019c82"
@@ -32,7 +32,7 @@
         "z": "59fc943e25473645",
         "group": "9f4bace2.7b09a",
         "name": "ImageTemplate",
-        "order": 7,
+        "order": 8,
         "width": 6,
         "height": 6,
         "format": "<div ng-bind-html=\"msg.payload\"></div>",
@@ -41,8 +41,8 @@
         "resendOnRefresh": false,
         "templateScope": "local",
         "className": "",
-        "x": 700,
-        "y": 340,
+        "x": 940,
+        "y": 320,
         "wires": [
             []
         ]
@@ -54,8 +54,8 @@
         "name": "",
         "action": "",
         "property": "payload",
-        "x": 500,
-        "y": 260,
+        "x": 640,
+        "y": 320,
         "wires": [
             [
                 "54d516e85c4f91e1"
@@ -78,12 +78,12 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 410,
-        "y": 340,
+        "x": 530,
+        "y": 360,
         "wires": [
             [
                 "7ef3f6f4b664a664",
-                "337ff149a1b382ad"
+                "825e560128135f83"
             ]
         ]
     },
@@ -93,7 +93,7 @@
         "z": "59fc943e25473645",
         "group": "9f4bace2.7b09a",
         "name": "VideoTemplate",
-        "order": 6,
+        "order": 7,
         "width": 6,
         "height": 5,
         "format": "",
@@ -103,7 +103,7 @@
         "templateScope": "local",
         "className": "",
         "x": 640,
-        "y": 120,
+        "y": 160,
         "wires": [
             []
         ]
@@ -119,8 +119,8 @@
         "syntax": "mustache",
         "template": "<iframe scrolling=no marginwidth=0 marginheight=0 frameborder=0 width=640 height=480\n    style=\"-webkit-transform:scale(1.0);-moz-transform-scale(0.5);\"\n    src=\"http://{{ipaddress}}:8080/?action=stream/\"></iframe>",
         "output": "str",
-        "x": 420,
-        "y": 100,
+        "x": 480,
+        "y": 160,
         "wires": [
             [
                 "9497df38cc994cc2"
@@ -138,8 +138,8 @@
         "createDir": true,
         "overwriteFile": "true",
         "encoding": "none",
-        "x": 720,
-        "y": 480,
+        "x": 940,
+        "y": 440,
         "wires": [
             []
         ]
@@ -149,14 +149,14 @@
         "type": "function",
         "z": "59fc943e25473645",
         "name": "",
-        "func": "let now = new Date().toISOString().replace(/:/g, \"-\")\n//node.warn(now);\nlet folder = msg.payload;\nnode.warn(folder);\nmsg.filename = `/media/usb/${folder}/${now}.jpg`\nreturn msg; ",
+        "func": "let now = new Date().toISOString().replace(/:/g, \"-\")\n//node.warn(now);\nlet folder = msg.filename;\nif (folder != undefined){\n    node.warn(msg.payload);\n    msg.filename = `/media/usb/${folder}/${now}.jpg`\n    return msg;\n}\nelse{\n    msg = null;\n    return msg;\n} ",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 540,
-        "y": 480,
+        "x": 720,
+        "y": 460,
         "wires": [
             [
                 "3174f03bedd6f49b"
@@ -169,25 +169,25 @@
         "z": "59fc943e25473645",
         "name": "",
         "group": "9f4bace2.7b09a",
-        "order": 5,
+        "order": 6,
         "width": 0,
         "height": 0,
         "passthru": false,
-        "label": "CAPTURE",
+        "label": "摄像头录影",
         "tooltip": "",
         "color": "",
         "bgcolor": "",
         "className": "",
         "icon": "",
-        "payload": "filename",
-        "payloadType": "flow",
+        "payload": "",
+        "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
         "x": 110,
-        "y": 280,
+        "y": 160,
         "wires": [
             [
-                "a235185224fe1e7c"
+                "17c7a3ef67c6e975"
             ]
         ]
     },
@@ -196,7 +196,7 @@
         "type": "ui_text_input",
         "z": "59fc943e25473645",
         "name": "Filename",
-        "label": "Directory NAME",
+        "label": "文件夹名（英文）",
         "tooltip": "",
         "group": "9f4bace2.7b09a",
         "order": 2,
@@ -235,41 +235,15 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 500,
-        "y": 600,
+        "x": 520,
+        "y": 580,
         "wires": [
             [
-                "337ff149a1b382ad"
+                "337ff149a1b382ad",
+                "aae8b2b737a079d9"
             ],
             [
                 "20ac677d.a76908"
-            ]
-        ]
-    },
-    {
-        "id": "37f35d58.4dab42",
-        "type": "change",
-        "z": "59fc943e25473645",
-        "name": "get filename from flow",
-        "rules": [
-            {
-                "t": "set",
-                "p": "filename",
-                "pt": "msg",
-                "to": "filename",
-                "tot": "flow"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 220,
-        "y": 600,
-        "wires": [
-            [
-                "6e0990af.ffd42"
             ]
         ]
     },
@@ -295,7 +269,7 @@
         "type": "ui_text_input",
         "z": "59fc943e25473645",
         "name": "IP Address",
-        "label": "IP Address: ",
+        "label": "IP地址： ",
         "tooltip": "",
         "group": "9f4bace2.7b09a",
         "order": 1,
@@ -335,32 +309,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 260,
-        "y": 180,
+        "x": 300,
+        "y": 160,
         "wires": [
             [
-                "38dad13de1c1547a",
                 "ad3e2fd4b68b2cc6"
-            ]
-        ]
-    },
-    {
-        "id": "a235185224fe1e7c",
-        "type": "function",
-        "z": "59fc943e25473645",
-        "name": "CallTextInput",
-        "func": "switch (msg.topic) {\n    case \"ipaddress\":\n        msg.ipaddress = msg.payload;\n        break;\n    case \"filename\":\n        msg.filename = msg.payload;\n        break;\n    case \"duration\":\n        msg.duration = msg.payload;\n        break;\n    case \"sampletime\":\n        msg.sampletime = msg.payload;\n        break;        \n\n}\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 170,
-        "y": 360,
-        "wires": [
-            [
-                "17c7a3ef67c6e975",
-                "37f35d58.4dab42"
             ]
         ]
     },
@@ -473,172 +426,6 @@
             [
                 "ab4587a458bbbc04"
             ]
-        ]
-    },
-    {
-        "id": "e840e8b290aab1b2",
-        "type": "ui_text_input",
-        "z": "59fc943e25473645",
-        "name": "MaxTime",
-        "label": "",
-        "tooltip": "",
-        "group": "9f4bace2.7b09a",
-        "order": 5,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "mode": "text",
-        "delay": 300,
-        "topic": "duration",
-        "sendOnBlur": true,
-        "className": "",
-        "topicType": "msg",
-        "x": 340,
-        "y": 920,
-        "wires": [
-            [
-                "b74fe23ed6ff0441"
-            ]
-        ]
-    },
-    {
-        "id": "71f3c3ce3d14dc78",
-        "type": "ui_text_input",
-        "z": "59fc943e25473645",
-        "name": "SampleTime",
-        "label": "",
-        "tooltip": "",
-        "group": "9f4bace2.7b09a",
-        "order": 4,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "mode": "text",
-        "delay": 300,
-        "topic": "sampletime",
-        "sendOnBlur": true,
-        "className": "",
-        "topicType": "msg",
-        "x": 350,
-        "y": 1000,
-        "wires": [
-            [
-                "0bf99916cd72b517"
-            ]
-        ]
-    },
-    {
-        "id": "71582ac0e6916faa",
-        "type": "inject",
-        "z": "59fc943e25473645",
-        "name": "Init with empty string",
-        "props": [
-            {
-                "p": "payload",
-                "v": "",
-                "vt": "str"
-            },
-            {
-                "p": "topic",
-                "v": "",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "str",
-        "x": 140,
-        "y": 920,
-        "wires": [
-            [
-                "e840e8b290aab1b2"
-            ]
-        ]
-    },
-    {
-        "id": "a4395ac4792f2046",
-        "type": "inject",
-        "z": "59fc943e25473645",
-        "name": "Init with empty string",
-        "props": [
-            {
-                "p": "payload",
-                "v": "",
-                "vt": "str"
-            },
-            {
-                "p": "topic",
-                "v": "",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "str",
-        "x": 140,
-        "y": 1000,
-        "wires": [
-            [
-                "71f3c3ce3d14dc78"
-            ]
-        ]
-    },
-    {
-        "id": "b74fe23ed6ff0441",
-        "type": "change",
-        "z": "59fc943e25473645",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "duration",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 540,
-        "y": 920,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "0bf99916cd72b517",
-        "type": "change",
-        "z": "59fc943e25473645",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "sampletime",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 560,
-        "y": 1000,
-        "wires": [
-            []
         ]
     },
     {
@@ -934,12 +721,420 @@
         ]
     },
     {
+        "id": "adb3115c4477b004",
+        "type": "trigger",
+        "z": "59fc943e25473645",
+        "name": "",
+        "op1": "1",
+        "op2": "0",
+        "op1type": "str",
+        "op2type": "str",
+        "duration": "500",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 300,
+        "y": 260,
+        "wires": [
+            [
+                "aa1d1654c4c87a63",
+                "9a242c2888fab742"
+            ]
+        ]
+    },
+    {
+        "id": "aa1d1654c4c87a63",
+        "type": "rpi-gpio out",
+        "z": "59fc943e25473645",
+        "name": "",
+        "pin": "21",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "bcm": true,
+        "x": 460,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "9a242c2888fab742",
+        "type": "switch",
+        "z": "59fc943e25473645",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 290,
+        "y": 480,
+        "wires": [
+            [
+                "37f35d58.4dab42"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "8e7516098193e4ae",
+        "type": "trigger",
+        "z": "59fc943e25473645",
+        "name": "",
+        "op1": "1",
+        "op2": "0",
+        "op1type": "str",
+        "op2type": "str",
+        "duration": "-5",
+        "extend": false,
+        "overrideDelay": true,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 140,
+        "y": 380,
+        "wires": [
+            [
+                "adb3115c4477b004"
+            ]
+        ]
+    },
+    {
+        "id": "37f35d58.4dab42",
+        "type": "change",
+        "z": "59fc943e25473645",
+        "name": "get address from flow",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ipaddress",
+                "pt": "msg",
+                "to": "ipaddress",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 420,
+        "wires": [
+            [
+                "38dad13de1c1547a"
+            ]
+        ]
+    },
+    {
+        "id": "6b9060647178f6b2",
+        "type": "change",
+        "z": "59fc943e25473645",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "reset",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 640,
+        "wires": [
+            [
+                "8e7516098193e4ae"
+            ]
+        ]
+    },
+    {
+        "id": "825e560128135f83",
+        "type": "change",
+        "z": "59fc943e25473645",
+        "name": "get filename from flow",
+        "rules": [
+            {
+                "t": "set",
+                "p": "filename",
+                "pt": "msg",
+                "to": "filename",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 500,
+        "wires": [
+            [
+                "6e0990af.ffd42"
+            ]
+        ]
+    },
+    {
+        "id": "9e442bbe5ea6375c",
+        "type": "ui_button",
+        "z": "59fc943e25473645",
+        "name": "",
+        "group": "9f4bace2.7b09a",
+        "order": 4,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "采样",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 90,
+        "y": 220,
+        "wires": [
+            [
+                "8e7516098193e4ae",
+                "33116c254267c2bb"
+            ]
+        ]
+    },
+    {
+        "id": "cae5d41670a47f2c",
+        "type": "ui_button",
+        "z": "59fc943e25473645",
+        "name": "",
+        "group": "9f4bace2.7b09a",
+        "order": 5,
+        "width": 3,
+        "height": 1,
+        "passthru": true,
+        "label": "停止",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 190,
+        "y": 580,
+        "wires": [
+            [
+                "6b9060647178f6b2"
+            ]
+        ]
+    },
+    {
+        "id": "01dd93d3349fe357",
+        "type": "ui_numeric",
+        "z": "59fc943e25473645",
+        "name": "",
+        "label": "采样时间 (分钟）",
+        "tooltip": "",
+        "group": "9f4bace2.7b09a",
+        "order": 3,
+        "width": "5",
+        "height": "1",
+        "wrap": false,
+        "passthru": true,
+        "topic": "maxtime",
+        "topicType": "msg",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "30",
+        "step": "1",
+        "className": "",
+        "x": 350,
+        "y": 900,
+        "wires": [
+            [
+                "8fa5da7fcb95e888"
+            ]
+        ]
+    },
+    {
+        "id": "dcf059d5d1bf4a11",
+        "type": "delay",
+        "z": "59fc943e25473645",
+        "name": "",
+        "pauseType": "delayv",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 120,
+        "y": 540,
+        "wires": [
+            [
+                "cae5d41670a47f2c"
+            ]
+        ]
+    },
+    {
+        "id": "6da9abae2ba3b03d",
+        "type": "change",
+        "z": "59fc943e25473645",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "maxtime",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 750,
+        "y": 940,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b9113f2a300ff4b3",
+        "type": "inject",
+        "z": "59fc943e25473645",
+        "name": "Init with empty string",
+        "props": [
+            {
+                "p": "payload",
+                "v": "",
+                "vt": "str"
+            },
+            {
+                "p": "topic",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 120,
+        "y": 880,
+        "wires": [
+            [
+                "01dd93d3349fe357"
+            ]
+        ]
+    },
+    {
+        "id": "33116c254267c2bb",
+        "type": "change",
+        "z": "59fc943e25473645",
+        "name": "get maxtime from flow",
+        "rules": [
+            {
+                "t": "set",
+                "p": "delay",
+                "pt": "msg",
+                "to": "maxtime",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 100,
+        "y": 500,
+        "wires": [
+            [
+                "dcf059d5d1bf4a11"
+            ]
+        ]
+    },
+    {
+        "id": "8fa5da7fcb95e888",
+        "type": "function",
+        "z": "59fc943e25473645",
+        "name": "Convert Minutes to minisec",
+        "func": "msg.payload = msg.payload * 60 *1000;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 960,
+        "wires": [
+            [
+                "6da9abae2ba3b03d"
+            ]
+        ]
+    },
+    {
+        "id": "aae8b2b737a079d9",
+        "type": "debug",
+        "z": "59fc943e25473645",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "filename2",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 540,
+        "wires": []
+    },
+    {
         "id": "9f4bace2.7b09a",
         "type": "ui_group",
-        "name": "MJPEG Encoder",
+        "name": "RPiCamera",
         "tab": "fbd536a.22bf9c8",
         "order": 1,
-        "disp": true,
+        "disp": false,
         "width": "6",
         "collapse": false,
         "className": ""
