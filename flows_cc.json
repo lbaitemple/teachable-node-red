@@ -32,7 +32,7 @@
         "z": "59fc943e25473645",
         "group": "9f4bace2.7b09a",
         "name": "ImageTemplate",
-        "order": 10,
+        "order": 11,
         "width": 6,
         "height": 6,
         "format": "<div ng-bind-html=\"msg.payload\"></div>",
@@ -83,7 +83,8 @@
         "wires": [
             [
                 "7ef3f6f4b664a664",
-                "6e0990af.ffd42"
+                "6e0990af.ffd42",
+                "553128747fd995c2"
             ]
         ]
     },
@@ -93,7 +94,7 @@
         "z": "59fc943e25473645",
         "group": "9f4bace2.7b09a",
         "name": "VideoTemplate",
-        "order": 9,
+        "order": 10,
         "width": 6,
         "height": 5,
         "format": "",
@@ -593,7 +594,7 @@
         "z": "59fc943e25473645",
         "name": "",
         "group": "9f4bace2.7b09a",
-        "order": 7,
+        "order": 8,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -622,7 +623,7 @@
         "z": "59fc943e25473645",
         "name": "",
         "group": "9f4bace2.7b09a",
-        "order": 8,
+        "order": 9,
         "width": 3,
         "height": 1,
         "passthru": true,
@@ -652,7 +653,7 @@
         "label": "采样时间 (分钟）",
         "tooltip": "",
         "group": "9f4bace2.7b09a",
-        "order": 5,
+        "order": 6,
         "width": 5,
         "height": 1,
         "wrap": false,
@@ -798,33 +799,6 @@
         ]
     },
     {
-        "id": "ea2b396b013bfc35",
-        "type": "ui_slider",
-        "z": "59fc943e25473645",
-        "name": "",
-        "label": "光强",
-        "tooltip": "",
-        "group": "9f4bace2.7b09a",
-        "order": 4,
-        "width": 6,
-        "height": 1,
-        "passthru": true,
-        "outs": "all",
-        "topic": "topic",
-        "topicType": "msg",
-        "min": 0,
-        "max": "100",
-        "step": "10",
-        "className": "",
-        "x": 270,
-        "y": 980,
-        "wires": [
-            [
-                "c04b4a38d002b5d1"
-            ]
-        ]
-    },
-    {
         "id": "508b85e4d437fae8",
         "type": "inject",
         "z": "59fc943e25473645",
@@ -849,7 +823,7 @@
         "y": 980,
         "wires": [
             [
-                "ea2b396b013bfc35"
+                "992bc11f.dc2a4"
             ]
         ]
     },
@@ -921,14 +895,66 @@
         "wires": []
     },
     {
-        "id": "ec7eb41e52118d4a",
-        "type": "ui_spacer",
+        "id": "4bc92110.64406",
+        "type": "ui_template",
         "z": "59fc943e25473645",
-        "name": "spacer",
+        "group": "93892d22.50ab8",
+        "name": "",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "format": "<style>\nmd-slider[md-discrete] .md-sign,\nmd-slider[md-discrete] .md-sign:after {\n opacity: 1;\n -webkit-transform: translate3d(0, 0, 0) scale(1);\n transform: translate3d(0, 0, 0) scale(1);\n}\n</style>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "templateScope": "global",
+        "x": 300,
+        "y": 1120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "992bc11f.dc2a4",
+        "type": "ui_slider",
+        "z": "59fc943e25473645",
+        "name": "",
+        "label": "光强",
+        "tooltip": "",
         "group": "9f4bace2.7b09a",
-        "order": 6,
-        "width": 1,
-        "height": 1
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "",
+        "topicType": "str",
+        "min": 0,
+        "max": "100",
+        "step": "10",
+        "className": "",
+        "x": 290,
+        "y": 1160,
+        "wires": [
+            [
+                "c04b4a38d002b5d1"
+            ]
+        ]
+    },
+    {
+        "id": "553128747fd995c2",
+        "type": "debug",
+        "z": "59fc943e25473645",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 760,
+        "y": 440,
+        "wires": []
     },
     {
         "id": "9f4bace2.7b09a",
@@ -942,10 +968,29 @@
         "className": ""
     },
     {
+        "id": "93892d22.50ab8",
+        "type": "ui_group",
+        "name": "charts",
+        "tab": "a24618c5.be59c8",
+        "order": 1,
+        "disp": true,
+        "width": "14",
+        "collapse": false
+    },
+    {
         "id": "fbd536a.22bf9c8",
         "type": "ui_tab",
         "name": "Home",
         "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "a24618c5.be59c8",
+        "type": "ui_tab",
+        "name": "tab 1",
+        "icon": "weekend",
+        "order": 1,
         "disabled": false,
         "hidden": false
     }
