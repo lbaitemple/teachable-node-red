@@ -103,8 +103,8 @@
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 660,
-        "y": 140,
+        "x": 740,
+        "y": 160,
         "wires": [
             []
         ]
@@ -120,7 +120,7 @@
         "syntax": "mustache",
         "template": "<iframe scrolling=no marginwidth=0 marginheight=0 frameborder=0 width=640 height=480\n    style=\"-webkit-transform:scale(1.0);-moz-transform-scale(0.5);\"\n    src=\"http://{{ipaddress}}:8080/?action=stream/\"></iframe>",
         "output": "str",
-        "x": 480,
+        "x": 520,
         "y": 160,
         "wires": [
             [
@@ -193,32 +193,6 @@
         ]
     },
     {
-        "id": "21ce6be17c95aa7a",
-        "type": "ui_text_input",
-        "z": "59fc943e25473645",
-        "name": "Filename",
-        "label": "文件夹名（英文）",
-        "tooltip": "",
-        "group": "9f4bace2.7b09a",
-        "order": 3,
-        "width": 3,
-        "height": 1,
-        "passthru": true,
-        "mode": "text",
-        "delay": 300,
-        "topic": "filename",
-        "sendOnBlur": true,
-        "className": "",
-        "topicType": "str",
-        "x": 400,
-        "y": 740,
-        "wires": [
-            [
-                "2ffeee02.29d762"
-            ]
-        ]
-    },
-    {
         "id": "6e0990af.ffd42",
         "type": "switch",
         "z": "59fc943e25473645",
@@ -282,12 +256,10 @@
         "sendOnBlur": true,
         "className": "",
         "topicType": "str",
-        "x": 390,
+        "x": 790,
         "y": 820,
         "wires": [
-            [
-                "98bfc90366312100"
-            ]
+            []
         ]
     },
     {
@@ -336,10 +308,12 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 590,
-        "y": 740,
+        "x": 510,
+        "y": 720,
         "wires": [
-            []
+            [
+                "21ce6be17c95aa7a"
+            ]
         ]
     },
     {
@@ -361,10 +335,12 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 610,
+        "x": 430,
         "y": 820,
         "wires": [
-            []
+            [
+                "ab4587a458bbbc04"
+            ]
         ]
     },
     {
@@ -392,7 +368,7 @@
         "y": 740,
         "wires": [
             [
-                "21ce6be17c95aa7a"
+                "2ffeee02.29d762"
             ]
         ]
     },
@@ -421,7 +397,7 @@
         "y": 820,
         "wires": [
             [
-                "ab4587a458bbbc04"
+                "98bfc90366312100"
             ]
         ]
     },
@@ -665,12 +641,10 @@
         "max": "30",
         "step": "1",
         "className": "",
-        "x": 350,
-        "y": 900,
+        "x": 390,
+        "y": 960,
         "wires": [
-            [
-                "8fa5da7fcb95e888"
-            ]
+            []
         ]
     },
     {
@@ -717,8 +691,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 750,
-        "y": 940,
+        "x": 590,
+        "y": 880,
         "wires": [
             []
         ]
@@ -744,10 +718,11 @@
         "topic": "",
         "payload": "1",
         "payloadType": "str",
-        "x": 120,
+        "x": 100,
         "y": 880,
         "wires": [
             [
+                "8fa5da7fcb95e888",
                 "01dd93d3349fe357"
             ]
         ]
@@ -790,8 +765,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 520,
-        "y": 960,
+        "x": 360,
+        "y": 880,
         "wires": [
             [
                 "6da9abae2ba3b03d"
@@ -823,7 +798,7 @@
         "y": 980,
         "wires": [
             [
-                "992bc11f.dc2a4"
+                "c04b4a38d002b5d1"
             ]
         ]
     },
@@ -849,7 +824,9 @@
         "x": 500,
         "y": 1040,
         "wires": [
-            []
+            [
+                "992bc11f.dc2a4"
+            ]
         ]
     },
     {
@@ -907,8 +884,8 @@
         "storeOutMessages": true,
         "fwdInMessages": true,
         "templateScope": "global",
-        "x": 300,
-        "y": 1120,
+        "x": 280,
+        "y": 1100,
         "wires": [
             []
         ]
@@ -932,12 +909,10 @@
         "max": "100",
         "step": "10",
         "className": "",
-        "x": 290,
-        "y": 1160,
+        "x": 710,
+        "y": 1000,
         "wires": [
-            [
-                "c04b4a38d002b5d1"
-            ]
+            []
         ]
     },
     {
@@ -955,6 +930,30 @@
         "x": 760,
         "y": 440,
         "wires": []
+    },
+    {
+        "id": "21ce6be17c95aa7a",
+        "type": "ui_text_input",
+        "z": "59fc943e25473645",
+        "name": "Filename",
+        "label": "文件夹名（英文）",
+        "tooltip": "",
+        "group": "9f4bace2.7b09a",
+        "order": 3,
+        "width": 3,
+        "height": 1,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "filename",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "str",
+        "x": 760,
+        "y": 740,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "9f4bace2.7b09a",
